@@ -17,6 +17,7 @@ import pandas as pd
 import sys
 import pymysql
 from dotenv import load_dotenv
+import json
 
 load_dotenv(verbose=True)
 
@@ -58,40 +59,57 @@ def load_api(movie_id):
 def api_to_db():
     conn, cursor = connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
 
-    cursor.execute("DROP TABLE IF EXISTS movie_info;")
-    cursor.execute("""CREATE TABLE movie_info (
-                        imdbID VARCHAR(100) PRIMARY KEY,
-                        Title VARCHAR(100) NOT NULL,
-                        Year INT,
-                        Genre VARCHAR(100),
-                        Director VARCHAR(100),
-                        Language VARCHAR(100),
-                        Country VARCHAR(100),
-                        Poster VARCHAR(100),
-                        Metascore INT,
-                        imdbRating FLOAT(3, 2),
-                        BoxOffice VARCHAR(100) NOT NULL
-        );
-        """)
+    # cursor.execute("DROP TABLE IF EXISTS movie_train;")
+    # cursor.execute("""CREATE TABLE movie_train (
+    #                     imdbID VARCHAR(100) PRIMARY KEY,
+    #                     Title VARCHAR(100) NOT NULL,
+    #                     Year INT,
+    #                     Genre VARCHAR(100),
+    #                     Director VARCHAR(100),
+    #                     Language VARCHAR(100),
+    #                     Country VARCHAR(100),
+    #                     Poster VARCHAR(100),
+    #                     imdbRating FLOAT(3, 2),
+    #                     BoxOffice VARCHAR(100) NOT NULL
+    #     );
+    #     """)
 
     for i in range (len(csv_id)):
         movie_id = csv_id.iloc[i]['tconst']
         try:
             movieInfo = requests.get('http://www.omdbapi.com/?apikey='+API_KEY+'&i='+movie_id).json()
-
-            cursor.execute("""INSERT INTO movie_info (imdbID, Title, Year, Genre, Director, Language, Country, Poster, Metascore,  imdbRating, BoxOffice) 
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", 
-                (movieInfo['imdbID'], movieInfo['Title'], movieInfo['Year'], 
-                movieInfo['Genre'], movieInfo['Director'], movieInfo['Language'], movieInfo['Country'], movieInfo['Poster'], 
-                movieInfo['Metascore'], movieInfo['imdbRating'], movieInfo['BoxOffice']))
+            if(movieInfo['BoxOffice'] != 'N/A'):
+                cursor.execute("""INSERT INTO movie_train (imdbID, Title, Year, Genre, Director, Language, Country, Poster,  imdbRating, BoxOffice) 
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", 
+                    (movieInfo['imdbID'], movieInfo['Title'], movieInfo['Year'], 
+                    movieInfo['Genre'], movieInfo['Director'], movieInfo['Language'], movieInfo['Country'], movieInfo['Poster'], 
+                    movieInfo['imdbRating'], movieInfo['BoxOffice']))
         except:
             pass
 
     conn.commit()
 
 
-csv_id = load_csv('imdb_prac.csv')
-api_to_db()
+# csv_id = load_csv('./data/imdb_20941.csv')
+# api_to_db()
 
 # load_api(csv_id)
 # connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
+
+def load_data():
+    conn, cursor = connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
+
+    cursor.execute("""SELECT *
+                    FROM movie_train
+                    WHERE imdbID = 'tt0449851'
+    """)
+    fields = map(lambda x:x[0], cursor.description)
+    result = [dict(zip(fields,row))   for row in cursor.fetchall()]
+    # data = json.dumps(cursor.fetchall())
+    # return data
+
+    print(result)
+    conn.close()
+    return result
+
+load_data()
