@@ -127,7 +127,7 @@ def db_to_csv(conn, cursor, TABLE):
 
 
 
-conn, cursor = connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
+# conn, cursor = connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
 # csv_id = load_csv('./data/imdb_20310.csv')
 # api_to_db(conn, cursor, csv_id)
 # db_to_csv(conn, cursor, 'movie_train')

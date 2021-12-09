@@ -23,8 +23,9 @@ def page_not_found(error):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        api_data = api.load_data()
-        return render_template('index.html', data = api_data)
+        # api_data = api.load_data()
+        # return render_template('index.html', data = api_data)
+        return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
