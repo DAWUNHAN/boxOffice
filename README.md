@@ -1,1 +1,1 @@
-# 영화의 Box Office 매출을 예상하는 모델
+# project (-ing)
