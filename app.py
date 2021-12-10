@@ -32,7 +32,7 @@ import os
 
 import sys
 from flask import Flask, render_template
-import boxOffice.metabase as metabase
+import metabase
  
 app = Flask(__name__)
  
