@@ -3,7 +3,6 @@ import numpy as np
 import api # To load functions in api.py
 from dotenv import load_dotenv
 import os
-import server
 
 # load_dotenv(verbose=True)
 
@@ -36,13 +35,10 @@ from flask import Flask, render_template
  
 app = Flask(__name__)
  
-# @app.route("/")
-# def index():
-#     return render_template("index.html")
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/")
 def index():
-    if request.method == 'GET':
-        return render_template('index.html', data=server.iframeUrl)
+    return render_template("index.html")
+
  
 if __name__ == "__main__":
     app.run(debug=True)
