@@ -32,7 +32,7 @@ import os
 
 import sys
 from flask import Flask, render_template
-import server
+import metabase
  
 app = Flask(__name__)
  
@@ -43,7 +43,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template('index.html', iframeUrl = server.iframeUrl)
+        return render_template('index.html', iframeUrl = metabase.iframeUrl)
 
  
 if __name__ == "__main__":
