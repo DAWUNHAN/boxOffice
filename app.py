@@ -32,12 +32,18 @@ import os
 
 import sys
 from flask import Flask, render_template
+import server
  
 app = Flask(__name__)
  
-@app.route("/")
+# @app.route("/")
+# def index():
+#     return render_template("index.html")
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template("index.html")
+    if request.method == 'GET':
+        return render_template('index.html', iframeUrl = server.iframeUrl)
 
  
 if __name__ == "__main__":
