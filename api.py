@@ -42,20 +42,22 @@ def connect_db(host, port, database, username, password):
         
     return conn, cursor
 
-# csv file 불러오기
+# csv file 불러오기.
 def load_csv(path):
     csv_id = pd.read_csv(path)
     return csv_id
 
-def load_api(movie_id, csv_id):
+# API에서 정보 불러오기.
+def load_api(csv_id):
+    movieinfo_list = []
     for i in range (len(csv_id)):
         movie_id = csv_id.iloc[i]['tconst']
         try:
             movieInfo = requests.get('http://www.omdbapi.com/?apikey='+API_KEY+'&i='+movie_id).json()
-            print(movieInfo['Title'])
+            movieinfo_list.append(movieInfo)
         except:
             pass
-    return movieInfo
+    return movieinfo_list
 
 # API에 있는 데이터를 DB에 입력하는 함수.
 def api_to_db(conn, cursor, csv_id):
@@ -91,16 +93,18 @@ def api_to_db(conn, cursor, csv_id):
     conn.commit()
 
 # AWS DB로부터 데이터를 받아오는 함수.
-def load_data():
-    conn, cursor = connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
-    cursor.execute("""SELECT *
-                    FROM movie_train
-                    WHERE imdbID = 'tt0449851'
-    """)
-    fields = map(lambda x:x[0], cursor.description)
-    result = [dict(zip(fields,row)) for row in cursor.fetchall()]
-    conn.close()
-    return result
+# def load_data():
+#     conn, cursor = connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
+#     cursor.execute("""SELECT *
+#                     FROM movie_train
+#                     WHERE imdbID = 'tt0449851'
+#     """)
+#     fields = map(lambda x:x[0], cursor.description)
+#     result = [dict(zip(fields,row)) for row in cursor.fetchall()]
+#     conn.close()
+#     return result
+
+
 
 # DB 특정 테이블 데이터를 csv 파일로 가져오기 
 def db_to_csv(conn, cursor, TABLE):
@@ -125,10 +129,19 @@ def db_to_csv(conn, cursor, TABLE):
     f.close()
     conn.close()
 
-
+# csv 파일을 데이터프레임에 넣기
+def csv_to_df(csv_path):
+    df = pd.read_csv(csv_path)
+    return df
 
 # conn, cursor = connect_db(HOST, PORT, DATABASE, USERNAME, PASSWORD)
 # csv_id = load_csv('./data/imdb_20310.csv')
 # api_to_db(conn, cursor, csv_id)
 # db_to_csv(conn, cursor, 'movie_train')
 
+# imdb_id_front = load_csv('./data/imdb_front.csv')
+# info = load_api(imdb_id_front)
+# print(info)
+
+# df = csv_to_df('./data/movie_train.csv')
+# print(df.head(10))
