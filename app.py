@@ -9,6 +9,10 @@ import pickle
 from dotenv import load_dotenv
 import json
 import csv
+import pandas as pd 
+
+with open('model.pkl','rb') as pickle_file:
+    model = pickle.load(open('model.pkl', 'rb'))
 
 load_dotenv(verbose=True)
 
@@ -21,10 +25,16 @@ def index():
     if request.method == 'GET':
         return render_template('index.html', df=df, API_KEY=API_KEY)
 
+
     if request.method == 'POST':
         result = request.form
-        pred_office =  ml.predict_boxoffice(Year=result['Year'],  imdbRating=result['imdbRating'])
-        return render_template('index.html', pred_office=pred_office, df=df, API_KEY=API_KEY)
+        Year = float(request.form['Year'])
+        imdbRating = float(request.form['imdbRating'])
+        pred_office =  ml.predict_boxoffice(Year=Year,  imdbRating=imdbRating)
+        
+        print(result['Year'])
+
+        return render_template('index.html',  pred_office=pred_office, df=df, API_KEY=API_KEY)
 
 if __name__ == "__main__":
     app.run(debug=True)

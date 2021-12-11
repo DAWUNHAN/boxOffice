@@ -1,10 +1,9 @@
 import pandas as pd
 import numpy as np
 import pickle
-from category_encoders import OneHotEncoder
-import lightgbm as lgbm
 
-def predict_boxoffice(Year, imdbRating ):
+
+def predict_boxoffice(Year, imdbRating):
     with open('model.pkl','rb') as pickle_file:
         model = pickle.load(open('model.pkl', 'rb'))
 
@@ -14,7 +13,7 @@ def predict_boxoffice(Year, imdbRating ):
     )
     # 예측
     pred = model.predict(df)[0]
-    
+
     return pred
 
 
