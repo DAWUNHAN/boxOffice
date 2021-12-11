@@ -27,7 +27,8 @@
             <!-- <span class="body-title"><h1>Movies</h1></span> -->
             <div class='body-movies-card'>
                 <div class="card">
-                    <img src="https://img.omdbapi.com/?i={{df.iloc[3612]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <!-- <img src="https://img.omdbapi.com/?i={{df.iloc[3612]['imdbID']}}&h=300&apikey={{API_KEY}}"> -->
+                    <img src="{{df.iloc[3612]['Poster']}}">
                     <div class="card-body">
                         <h5 class="card-title">{{df.iloc[3612]['Title']}}</h5>
                         <p class="card-genre">{{df.iloc[3612]['Genre']}}</p>
@@ -36,7 +37,7 @@
                     </div>
                 </div>
                 <div class="card" >
-                    <img src="https://img.omdbapi.com/?i={{df.iloc[3948]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                  <img src="{{df.iloc[3948]['Poster']}}">
                     <div class="card-body">
                         <h5 class="card-title">{{df.iloc[3948]['Title']}}</h5>
                         <p class="card-genre">{{df.iloc[3948]['Genre']}}</p>
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="card" >
-                    <img src="https://img.omdbapi.com/?i={{df.iloc[2962]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <img src="{{df.iloc[2962]['Poster']}}">
                     <div class="card-body">
                         <h5 class="card-title">{{df.iloc[2962]['Title']}}</h5>
                         <p class="card-genre">{{df.iloc[2962]['Genre']}}</p>
@@ -54,7 +55,7 @@
                     </div>
                 </div>
                 <div class="card" >
-                    <img src="https://img.omdbapi.com/?i={{df.iloc[4106]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <img src="{{df.iloc[4106]['Poster']}}">
                     <div class="card-body">
                         <h5 class="card-title">{{df.iloc[4106]['Title']}}</h5>
                         <p class="card-genre">{{df.iloc[4106]['Genre']}}</p>
@@ -63,7 +64,7 @@
                     </div>
                 </div>
                 <div class="card" >
-                    <img src="https://img.omdbapi.com/?i={{df.iloc[4089]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <img src="{{df.iloc[4089]['Poster']}}">
                     <div class="card-body">
                         <h5 class="card-title">{{df.iloc[4089]['Title']}}</h5>
                         <p class="card-genre">{{df.iloc[4089]['Genre']}}</p>
