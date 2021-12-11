@@ -1,7 +1,7 @@
 @charset 'utf-8';
- 
+
 html {
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Roboto Mono', monospace;
 	font-size: 14px;
 }
 body {
@@ -9,6 +9,9 @@ body {
 	color: white !important;
 	letter-spacing: -0.05em;
 	background: linear-gradient(to right, #042C66, #3748AA);
+}
+h1 {
+    font-size: 3rem;
 }
 a {
 	text-decoration: none;
@@ -25,7 +28,7 @@ a {
 	width: 100%;
 	height: 52px;
 	padding: 0 3rem;
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.3);
 }
 .local-nav-links {
 	display: flex;
@@ -51,3 +54,62 @@ a {
 	position: relative;
 	padding-top: 10vh;
 }
+.body-movies-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.card {
+	background-color: rgb(60 64 67 / 15%) !important;
+}
+.body-title{
+	text-align: center;
+	margin-top: 5%;
+}
+.body-dashboard {
+	text-align: center;
+}
+.body-dashboard iframe{
+	width: 80%;
+}
+.body-ml {
+    margin-top: 100px;
+    text-align: center;
+}
+.body-ml h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.input-group {
+	width: 20% !important;
+    margin: 0 auto;
+}
+input.btn.btn-primary {
+    margin-top: 30px;
+}
+.footer {
+	color: black;
+	background: #ffffff;
+	margin-top: 10vh;
+	padding: 70px 40px;
+	border-top: 1px solid #ffffff;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+  }
+.footer a {
+	color: rgb(29, 29, 31);
+	text-decoration: none;
+	}
+.footer a:hover {
+	color: rgb(29, 29, 31);
+	text-decoration: none;
+	}
+.footer-grid {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	}
+.footer-grid h2 {
+	color: black;
+	}

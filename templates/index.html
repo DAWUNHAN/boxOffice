@@ -7,50 +7,163 @@
 	<link rel="stylesheet" href="static/css/main.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
-<script src='static/js/main.js'></script>
-
+<script src='../static/js/main.js'></script>
 <body>
     <nav class="local-nav">
         <div class="local-nav-links">
-            <a href="#" class="home-name">Boxoffice</a>
-            <a href="#">Movies</a>
-            <a href="#">AI for boxoffice</a>
-            <a href="#">Dashboard</a>
+            <a href="#" class="home-name">Box Office</a>
+            <a href="#movies">Movies</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#ml">ML for boxoffice</a>
         </div>
     </nav>
-    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ViuDsy7yb8M?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        
-    <section class="body-content">
-            <h1>Movies</h1>
-            <span>
-                <h1>movie ok</h1>
-                <img src="https://img.omdbapi.com/?i={{df.iloc[0]['imdbID']}}&h=300&apikey={{API_KEY}}">
-                <p>{{df.iloc[0]['Title']}}</p>
-                <p>{{df.iloc[0]['BoxOffice']}}</p>
-            </span>
-            <span>
-                <h1>movie ok</h1>
-                <img src="https://img.omdbapi.com/?i={{df.iloc[222]['imdbID']}}&h=300&apikey={{API_KEY}}">
-                <p>{{df.iloc[222]['Title']}}</p>
-                <p>{{df.iloc[222]['BoxOffice']}}</p>
-            </span>
+
+    <div class="body-content">
+        <div class='body-movies' id="movies">
+            <!-- <span class="body-title"><h1>Movies</h1></span> -->
+            <div class='body-movies-card'>
+                <div class="card">
+                    <img src="https://img.omdbapi.com/?i={{df.iloc[3612]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{df.iloc[3612]['Title']}}</h5>
+                        <p class="card-genre">{{df.iloc[3612]['Genre']}}</p>
+                        <p class="card-boxoffice">{{df.iloc[3612]['BoxOffice']}}</p>
+                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[3612]['imdbRating']}}</a>
+                    </div>
+                </div>
+                <div class="card" >
+                    <img src="https://img.omdbapi.com/?i={{df.iloc[3948]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{df.iloc[3948]['Title']}}</h5>
+                        <p class="card-genre">{{df.iloc[3948]['Genre']}}</p>
+                        <p class="card-boxoffice">{{df.iloc[3948]['BoxOffice']}}</p>
+                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[3948]['imdbRating']}}</a>
+                    </div>
+                </div>
+                <div class="card" >
+                    <img src="https://img.omdbapi.com/?i={{df.iloc[2962]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{df.iloc[2962]['Title']}}</h5>
+                        <p class="card-genre">{{df.iloc[2962]['Genre']}}</p>
+                        <p class="card-boxoffice">{{df.iloc[2962]['BoxOffice']}}</p>
+                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[2962]['imdbRating']}}</a>
+                    </div>
+                </div>
+                <div class="card" >
+                    <img src="https://img.omdbapi.com/?i={{df.iloc[4106]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{df.iloc[4106]['Title']}}</h5>
+                        <p class="card-genre">{{df.iloc[4106]['Genre']}}</p>
+                        <p class="card-boxoffice">{{df.iloc[4106]['BoxOffice']}}</p>
+                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[4106]['imdbRating']}}</a>
+                    </div>
+                </div>
+                <div class="card" >
+                    <img src="https://img.omdbapi.com/?i={{df.iloc[4089]['imdbID']}}&h=300&apikey={{API_KEY}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{df.iloc[4089]['Title']}}</h5>
+                        <p class="card-genre">{{df.iloc[4089]['Genre']}}</p>
+                        <p class="card-boxoffice">{{df.iloc[4089]['BoxOffice']}}</p>
+                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[4089]['imdbRating']}}</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div>
+
+
+        <div class="body-dashboard" id="dashboard">
             <iframe width="80%" height="1500" src="https://datastudio.google.com/embed/reporting/8ec2a548-156d-42ff-a210-a3bb462be643/page/YgThC" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
-        <div>
-            <h3>AI for Boxoffice</h3>
+        <div class='body-ml' id="ml">
+            <h1>Machine Learning for Boxoffice</h1>
+            <h2>내가 좋아하는 영화의 박스 오피스를 예상해보세요!</h2>
             <form action="/" method = "POST">
-                <p>Year <input type = "text" name = "Year" /></p>
-                <p>imdbRating <input type = "text" name = "imdbRating" /></p>
-                <input type="submit" class="btn btn-primary">Submit</button>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">Year</span>
+                    <input type="text" class="form-control" name = "Year" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" >
+                  </div>
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">imdbRating</span>
+                    <input type="text" class="form-control" name = "imdbRating" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                  </div>
+                <!-- <p>Year <input type = "text" name = "Year" /></p>
+                <p>imdbRating <input type = "text" name = "imdbRating" /></p> -->
+                <input type="submit" class="btn btn-primary"></button>
             </form>
             {% if pred_office %}
             <h1>예상 수입: {{pred_office}}</h1>
             {% endif %}
         </div>
-    </section>
+    </div>
+    <footer class="footer">
+        <div class="footer-grid">
+          <h2>Contact Info</h2>
+          <div class="footer-detail">
+            <p>Feel free to reach out to me any time.</p>
+            <p>
+              <a href="mailto:dawun.han@gmail.com" target="_blank"
+                ><i class="fas fa-envelope"></i> dawun.han@gmail.com</a
+              ><br />
+            </p>
+            <p>
+              <a
+                href="https://da-journal.com/"
+                target="_blank"
+                ><i class="fab fa-linkedin"></i>
+                Tech Blog</a
+              ><br />
+            </p>
+            <p>
+              <a href="https://github.com/DAWUNHAN" target="_blank">
+                <i class="fab fa-github-square"></i> GitHub</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-grid">
+          <h2>Latest Projects</h2>
+          <div class="footer-detail">
+            <p>
+              <a href="https://github.com/DAWUNHAN/Weather-Predict" target="_blank"
+                >호주 우천 여부 예측 모델</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://github.com/DAWUNHAN/Game-sales-Analysis"
+                target="_blank"
+                >게임 판매량 데이터 분석</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://github.com/DAWUNHAN/DataAnalysisInPython"
+                target="_blank"
+                >공공 데이터 분석</a
+              >
+            </p>
+            <p>
+              <a
+                href="https://github.com/DAWUNHAN/Machine-Learning"
+                target="_blank"
+                >Machine-Learning 정리 레포지터리</a
+              >
+            </p>
+          </div>
+        </div>
+        <div class="footer-grid">
+          <h2>Current Availability</h2>
+          <div class="footer-detail">
+            <p>I would like to discuss new opportunities.</p>
+            <p>Let's get in touch!</p>
+          </div>
+        </div>
+      </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
