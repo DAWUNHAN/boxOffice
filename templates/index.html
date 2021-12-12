@@ -65,6 +65,18 @@
                 <p>imdbRating <input type = "text" name = "imdbRating" /></p> -->
                 <input type="submit" class="btn btn-primary"></button>
             </form>
+            <form action="/#ml" method = "POST">
+              <div class="form__group field">
+                <input type="input" class="form__field" placeholder="Year" name="Year" id='Year' required />
+                <label for="Year" class="form__label">Year</label>
+              </div>
+              <div class="form__group field">
+                <input type="input" class="form__field" placeholder="imdbRating" name="imdbRating" id='imdbRating' required />
+                <label for="imdbRating" class="form__label">imdbRating</label>
+              </div>
+              <input type="submit" class="btn btn-primary"></button>
+            </form>
+
             <div class="body-ml-pred">
               {% if pred_office %}
               <h1>예상 수입: ${{pred_office}}</h1>
