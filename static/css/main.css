@@ -75,17 +75,17 @@ a {
 	padding-top: 100px;
     text-align: center;
 	background-image: url(../img/video.png), linear-gradient(to right, #042C66, #3748AA);
-    background-repeat: repeat;
+    background-repeat: space;
     background-position: center center;
 }
 .body-ml h2 {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-.input-group {
+/* .input-group {
 	width: 20% !important;
     margin: 0 auto;
-}
+} */
 input.btn.btn-primary {
     margin-top: 30px;
 	margin-bottom: 30px;
@@ -120,31 +120,7 @@ input.btn.btn-primary {
 	color: black;
 	margin-bottom: 20px;
 	}
-
-@media only screen and (max-width: 667px) {
-	.body-movies-card {
-		display: block;
-	}
-	iframe{
-		height: 300px;
-	}
-	.input-group {
-		width: 60% !important;
-		margin: 0 auto;
-	}
-	.body-ml h2 {
-		padding: 0 5%;
-	}
-	.footer {
-		display: flex;
-		flex-direction: column;
-	  }
-	.footer-grid {
-		margin-left: inherit;
-		margin-right: inherit;
-		}
-}
-
+  /* input form */
 .form__group {
 	position: relative;
 	padding: 15px 0 0;
@@ -198,7 +174,7 @@ input.btn.btn-primary {
 	color: #e4af00;
 	font-weight: 700;
   }
-  /* reset input */
+/* reset input */
 .form__field:required, .form__field:invalid {
 	box-shadow: none;
   }
@@ -207,4 +183,30 @@ input.btn.btn-primary {
     background-color: #ffbb00 !important;
     border-color: #ffbb00 !important;
 }
-  
+/* Mobile version */
+@media only screen and (max-width: 667px) {
+	.body-movies-card {
+		display: block;
+	}
+	iframe{
+		height: 300px;
+	}
+	.input-group {
+		width: 60% !important;
+		margin: 0 auto;
+	}
+	.body-ml h2 {
+		padding: 0 5%;
+	}
+	.footer {
+		display: flex;
+		flex-direction: column;
+	  }
+	.footer-grid {
+		margin-left: inherit;
+		margin-right: inherit;
+		}
+	.form__group {
+		width: 100%;
+		}
+}
