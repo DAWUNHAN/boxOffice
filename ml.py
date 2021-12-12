@@ -12,7 +12,8 @@ def predict_boxoffice(Year, imdbRating):
         columns=['Year', 'imdbRating']
     )
     # 예측
-    pred = model.predict(df)[0]
+    pred = round(model.predict(df)[0], 2)
+    pred = format(pred, ',')
 
     return pred
 

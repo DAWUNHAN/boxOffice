@@ -24,81 +24,46 @@
 
     <div class="body-content">
         <div class='body-movies' id="movies">
-            <!-- <span class="body-title"><h1>Movies</h1></span> -->
             <div class='body-movies-card'>
+              {% for id in id_list %}
                 <div class="card">
-                    <!-- <img src="https://img.omdbapi.com/?i={{df.iloc[3612]['imdbID']}}&h=300&apikey={{API_KEY}}"> -->
-                    <img src="{{df.iloc[3612]['Poster']}}">
+                    <img src="{{df.iloc[id]['Poster']}}">
                     <div class="card-body">
-                        <h5 class="card-title">{{df.iloc[3612]['Title']}}</h5>
-                        <p class="card-genre">{{df.iloc[3612]['Genre']}}</p>
-                        <p class="card-boxoffice">{{df.iloc[3612]['BoxOffice']}}</p>
-                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[3612]['imdbRating']}}</a>
+                        <h5 class="card-title">{{df.iloc[id]['Title']}}</h5>
+                        <p class="card-genre">{{df.iloc[id]['Genre']}}</p>
+                        <p class="card-boxoffice">{{df.iloc[id]['BoxOffice']}}</p>
+                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[id]['imdbRating']}}</a>
                     </div>
                 </div>
-                <div class="card" >
-                  <img src="{{df.iloc[3948]['Poster']}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{df.iloc[3948]['Title']}}</h5>
-                        <p class="card-genre">{{df.iloc[3948]['Genre']}}</p>
-                        <p class="card-boxoffice">{{df.iloc[3948]['BoxOffice']}}</p>
-                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[3948]['imdbRating']}}</a>
-                    </div>
-                </div>
-                <div class="card" >
-                    <img src="{{df.iloc[2962]['Poster']}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{df.iloc[2962]['Title']}}</h5>
-                        <p class="card-genre">{{df.iloc[2962]['Genre']}}</p>
-                        <p class="card-boxoffice">{{df.iloc[2962]['BoxOffice']}}</p>
-                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[2962]['imdbRating']}}</a>
-                    </div>
-                </div>
-                <div class="card" >
-                    <img src="{{df.iloc[4106]['Poster']}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{df.iloc[4106]['Title']}}</h5>
-                        <p class="card-genre">{{df.iloc[4106]['Genre']}}</p>
-                        <p class="card-boxoffice">{{df.iloc[4106]['BoxOffice']}}</p>
-                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[4106]['imdbRating']}}</a>
-                    </div>
-                </div>
-                <div class="card" >
-                    <img src="{{df.iloc[4089]['Poster']}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{df.iloc[4089]['Title']}}</h5>
-                        <p class="card-genre">{{df.iloc[4089]['Genre']}}</p>
-                        <p class="card-boxoffice">{{df.iloc[4089]['BoxOffice']}}</p>
-                        <a href="#" class="card-imdbRating btn btn-primary">{{df.iloc[4089]['imdbRating']}}</a>
-                    </div>
-                </div>
+              {% endfor %}
             </div>
-
         </div>
 
 
         <div class="body-dashboard" id="dashboard">
-            <iframe width="80%" height="1500" src="https://datastudio.google.com/embed/reporting/8ec2a548-156d-42ff-a210-a3bb462be643/page/YgThC" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe width="80%" id="child-iframe" src="https://datastudio.google.com/embed/reporting/8ec2a548-156d-42ff-a210-a3bb462be643/page/YgThC" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
         <div class='body-ml' id="ml">
             <h1>Machine Learning for Boxoffice</h1>
             <h2>내가 좋아하는 영화의 박스 오피스를 예상해보세요!</h2>
-            <form action="/" method = "POST">
+            <form action="/#ml" method = "POST">
                 <div class="input-group input-group-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">Year</span>
+                    <span class="input-group-text" id="inputGroup-sizing-lg">연도</span>
                     <input type="text" class="form-control" name = "Year" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" >
                   </div>
                   <div class="input-group input-group-lg">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">imdbRating</span>
+                    <span class="input-group-text" id="inputGroup-sizing-lg">평점 (0~10)</span>
                     <input type="text" class="form-control" name = "imdbRating" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                   </div>
                 <!-- <p>Year <input type = "text" name = "Year" /></p>
                 <p>imdbRating <input type = "text" name = "imdbRating" /></p> -->
                 <input type="submit" class="btn btn-primary"></button>
             </form>
-            {% if pred_office %}
-            <h1>예상 수입: {{pred_office}}</h1>
-            {% endif %}
+            <div class="body-ml-pred">
+              {% if pred_office %}
+              <h1>예상 수입: ${{pred_office}}</h1>
+              {% endif %}
+            </div>
         </div>
     </div>
     <footer class="footer">
@@ -158,10 +123,19 @@
           </div>
         </div>
         <div class="footer-grid">
-          <h2>Current Availability</h2>
+          <h2>Current Project</h2>
           <div class="footer-detail">
-            <p>I would like to discuss new opportunities.</p>
-            <p>Let's get in touch!</p>
+            <p>
+              <a
+                href="https://github.com/DAWUNHAN/boxOffice"
+                target="_blank"
+                >GitHub Repository</a
+              >
+            </p>
+            <p><b>Tech Stacks</b></p>
+            <p>AWS RDS MySQL, Flask, LightGBM</p>
+            <p>Google Data Studio, Heroku</p>
+            <p>Movie Data from OMDB API</p>
           </div>
         </div>
       </footer>
@@ -171,7 +145,17 @@
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</body>
+    <script>
+      let iframe = document.querySelector("#child-iframe");
+    
+      window.addEventListener('message', function(e) {
+        let message = e.data;
+    
+        iframe.style.height = message.height + 'px';
+        iframe.style.width = message.width + 'px';
+      } , false);
+    </script>
+  </body>
 </html>
 
 

@@ -52,7 +52,7 @@ a {
 }
 .body-content {
 	position: relative;
-	padding-top: 10vh;
+	padding-top: 52px;
 }
 .body-movies-card {
     display: grid;
@@ -85,11 +85,14 @@ a {
 }
 input.btn.btn-primary {
     margin-top: 30px;
+	margin-bottom: 30px;
+}
+.body-ml-pred{
+	margin-bottom: 30px
 }
 .footer {
 	color: black;
 	background: #ffffff;
-	margin-top: 10vh;
 	padding: 70px 40px;
 	border-top: 1px solid #ffffff;
 	display: grid;
@@ -112,4 +115,30 @@ input.btn.btn-primary {
 	}
 .footer-grid h2 {
 	color: black;
+	margin-bottom: 20px;
 	}
+
+@media only screen and (max-width: 667px) {
+	.body-movies-card {
+		display: block;
+	}
+	iframe{
+		height: 300px;
+	}
+	.input-group {
+		width: 60% !important;
+		margin: 0 auto;
+	}
+	.body-ml h2 {
+		padding: 0 5%;
+	}
+	.footer {
+		display: flex;
+		flex-direction: column;
+	  }
+	.footer-grid {
+		margin-left: inherit;
+		margin-right: inherit;
+		}
+}
+

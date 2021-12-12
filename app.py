@@ -22,8 +22,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     df = api.csv_to_df('./data/movie_train.csv')
+    id_list = [3948, 4106, 1000, 3762, 4089]
     if request.method == 'GET':
-        return render_template('index.html', df=df, API_KEY=API_KEY)
+        return render_template('index.html', df=df, API_KEY=API_KEY, id_list=id_list)
 
 
     if request.method == 'POST':
@@ -34,7 +35,7 @@ def index():
         
         print(result['Year'])
 
-        return render_template('index.html',  pred_office=pred_office, df=df, API_KEY=API_KEY)
+        return render_template('index.html',  pred_office=pred_office, df=df, API_KEY=API_KEY, id_list=id_list)
 
 if __name__ == "__main__":
     app.run(debug=True)
