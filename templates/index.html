@@ -27,7 +27,26 @@
             <a href="#ml">ML for boxoffice</a>
         </div>
     </nav>
-
+    <div class='body-ml' id="ml">
+      <h1>Machine Learning for Boxoffice</h1>
+      <h2>내가 좋아하는 영화의 박스 오피스를 예상해보세요!</h2>
+      <form action="" method = "POST">
+        <div class="form__group field">
+          <input type="input" class="form__field" placeholder="Year" name="Year" id='Year' required />
+          <label for="Year" class="form__label">연도</label>
+        </div>
+        <div class="form__group field">
+          <input type="input" class="form__field" placeholder="imdbRating" name="imdbRating" id='imdbRating' required />
+          <label for="imdbRating" class="form__label">평점 (0~10)</label>
+        </div>
+        <input type="submit" class="btn btn-primary"></button>
+      </form>
+      <div class="body-ml-pred">
+        {% if pred_office %}
+        <h1>예상 수입: ${{pred_office}}</h1>
+        {% endif %}
+      </div>
+  </div>
     <div class="body-content">
         <div class='body-movies' id="movies">
             <div class='body-movies-card'>
@@ -44,30 +63,8 @@
               {% endfor %}
             </div>
         </div>
-
-
         <div class="body-dashboard" id="dashboard">
             <iframe width="80%" id="child-iframe" src="https://datastudio.google.com/embed/reporting/8ec2a548-156d-42ff-a210-a3bb462be643/page/YgThC" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <div class='body-ml' id="ml">
-            <h1>Machine Learning for Boxoffice</h1>
-            <h2>내가 좋아하는 영화의 박스 오피스를 예상해보세요!</h2>
-            <form action="/#ml" method = "POST">
-              <div class="form__group field">
-                <input type="input" class="form__field" placeholder="Year" name="Year" id='Year' required />
-                <label for="Year" class="form__label">연도</label>
-              </div>
-              <div class="form__group field">
-                <input type="input" class="form__field" placeholder="imdbRating" name="imdbRating" id='imdbRating' required />
-                <label for="imdbRating" class="form__label">평점 (0~10)</label>
-              </div>
-              <input type="submit" class="btn btn-primary"></button>
-            </form>
-            <div class="body-ml-pred">
-              {% if pred_office %}
-              <h1>예상 수입: ${{pred_office}}</h1>
-              {% endif %}
-            </div>
         </div>
     </div>
     <footer class="footer">

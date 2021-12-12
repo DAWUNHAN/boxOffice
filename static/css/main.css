@@ -82,10 +82,6 @@ a {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-/* .input-group {
-	width: 20% !important;
-    margin: 0 auto;
-} */
 input.btn.btn-primary {
     margin-top: 30px;
 	margin-bottom: 30px;
@@ -207,6 +203,6 @@ input.btn.btn-primary {
 		margin-right: inherit;
 		}
 	.form__group {
-		width: 100%;
+		width: 80%;
 		}
 }
