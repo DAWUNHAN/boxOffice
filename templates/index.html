@@ -52,7 +52,7 @@
         <div class='body-ml' id="ml">
             <h1>Machine Learning for Boxoffice</h1>
             <h2>내가 좋아하는 영화의 박스 오피스를 예상해보세요!</h2>
-            <form action="/#ml" method = "POST">
+            <!-- <form action="/#ml" method = "POST">
                 <div class="input-group input-group-lg">
                     <span class="input-group-text" id="inputGroup-sizing-lg">연도</span>
                     <input type="text" class="form-control" name = "Year" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" >
@@ -61,10 +61,8 @@
                     <span class="input-group-text" id="inputGroup-sizing-lg">평점 (0~10)</span>
                     <input type="text" class="form-control" name = "imdbRating" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                   </div>
-                <!-- <p>Year <input type = "text" name = "Year" /></p>
-                <p>imdbRating <input type = "text" name = "imdbRating" /></p> -->
                 <input type="submit" class="btn btn-primary"></button>
-            </form>
+            </form> -->
             <form action="/#ml" method = "POST">
               <div class="form__group field">
                 <input type="input" class="form__field" placeholder="Year" name="Year" id='Year' required />
@@ -72,11 +70,10 @@
               </div>
               <div class="form__group field">
                 <input type="input" class="form__field" placeholder="imdbRating" name="imdbRating" id='imdbRating' required />
-                <label for="imdbRating" class="form__label">imdbRating</label>
+                <label for="imdbRating" class="form__label">imdbRating (0~10)</label>
               </div>
               <input type="submit" class="btn btn-primary"></button>
             </form>
-
             <div class="body-ml-pred">
               {% if pred_office %}
               <h1>예상 수입: ${{pred_office}}</h1>
