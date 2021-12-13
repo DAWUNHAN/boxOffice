@@ -19,6 +19,11 @@ load_dotenv(verbose=True)
 API_KEY = os.getenv('API_KEY')
 app = Flask(__name__)
 
+@app.errorhandler(500)
+def page_not_found(error):
+
+	return render_template('error.html'), 404
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     df = api.csv_to_df('./data/movie_train.csv')
