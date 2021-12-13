@@ -73,9 +73,9 @@ a {
 .body-ml {
 	padding-top: 100px;
     text-align: center;
-	background-image: url(../img/video.png), linear-gradient(to right, #042C66, #3748AA);
+	/* background-image: url(../img/video.png), linear-gradient(to right, #042C66, #3748AA);
     background-repeat: space;
-    background-position: center center;
+    background-position: center center; */
 }
 .body-ml h2 {
     margin-top: 30px;
