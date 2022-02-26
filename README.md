@@ -1,5 +1,5 @@
 # Boxoffice
-영화 출시 연도와 평점을 이용해 Boxoffice 수입을 예측합니다.
+LightGBM을 이용하여 영화 정보로 박스오피스 수입을 예측합니다.
 
 ### [웹 사이트 바로가기](http://boxoffice-ai.herokuapp.com/)
 
